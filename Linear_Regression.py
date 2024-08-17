@@ -50,4 +50,21 @@ datapoints = [(1, 1), (3, 3), (5, 5), (-1, -1)]
 possible_ms = np.arange(-10, 10+0.1, 0.1)
 #print(possible_ms)
 possible_bs = np.arange(-20, 20+0.1, 0.1)
-print(possible_bs)
+#print(possible_bs)
+
+smallest_error = float("inf")
+best_m = 0
+best_b = 0
+
+datapoints = [(1, 2), (2, 0), (3, 4), (4, 4), (5, 3)]
+
+for m in possible_ms:
+    for b in possible_bs:
+        error = calculate_all_error(m, b, datapoints)
+        if ( error < smallest_error):
+            best_m = m
+            best_b = b
+            smallest_error = error
+print(best_m, best_b, smallest_error)
+
+print(get_y(0.4, 6, 1.6))
